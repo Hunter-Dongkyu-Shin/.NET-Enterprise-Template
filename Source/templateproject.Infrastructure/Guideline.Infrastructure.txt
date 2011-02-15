@@ -1,0 +1,15 @@
+﻿Infrastructure layer guideline
+
+모든 Layer에서 사용하게 될 기반구조(?) 프로젝트입니다.
+
+
+[Builders]
+	*. TODO : 특정 요구사항을 Build해주는(?) 클래스들로 구성
+[Log]
+	*. Logging Interface
+[Messaging]
+	*. TODO : ESB를 인지한 후, 이 폴더의 역할을 파악한 후 기재
+[Utils]
+	*. 각종 Utility 클래스
+[Validations]
+	*. Validation 제공 클래스
