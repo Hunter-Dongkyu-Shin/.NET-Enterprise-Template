@@ -8,7 +8,7 @@
     <ProjectGuid>{DAEA087C-F919-40E4-B5F1-DECF9CC39390}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>templateproject.Spec</RootNamespace>
+    <RootNamespace>templateproject</RootNamespace>
     <AssemblyName>templateproject.Spec</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -34,9 +34,16 @@
     <Reference Include="Machine.Specifications">
       <HintPath>..\..\Tools\MSpec\Machine.Specifications.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\lib\net-4.0\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq.Contrib">
+      <HintPath>..\..\lib\net-4.0\Moq.Contrib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\Log\LoggerSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
