@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\AutoMockFactory.cs" />
-    <Compile Include="Framework\AutoMockType.cs" />
     <Compile Include="Framework\ClassUnderTest.cs" />
     <Compile Include="Framework\Sample\Specifications.AutoMock.cs" />
     <Compile Include="Framework\Sample\Specifications.cs" />
