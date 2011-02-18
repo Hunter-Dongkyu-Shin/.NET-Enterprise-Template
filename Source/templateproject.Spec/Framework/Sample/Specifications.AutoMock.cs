@@ -5,59 +5,53 @@ namespace templateproject.Framework.Sample
     using Machine.Specifications;
     using It = Machine.Specifications.It;
 
-    public interface IDependencyType
+    public interface IDependency
     {
-        void DependencyMethod();
+        void Method();
     }
 
     public class DependencyController
     {
-        protected IDependencyType DependencyType { get; set; }
+        protected IDependency Dependency { get; set; }
 
-        public DependencyController(IDependencyType dependencyType)
+        public DependencyController(IDependency dependency)
         {
-            DependencyType = dependencyType;
+            Dependency = dependency;
         }
 
         public void InvokeDependencyMethod()
         {
-            DependencyType.DependencyMethod();
+            Dependency.Method();
         }
     }
 
     [Subject(typeof(DependencyController), "invoke dependency method"), Tags("Sample.BDDFramework.Automock")]
     public class when_given_a_dependency_controller : SpecificationFor<DependencyController>
     {
-        Establish context = () =>
-                                {
-                                    _dependencyType = AutoMocker.Get<IDependencyType>();
-                                    _dependencyType.Setup(x => x.DependencyMethod()).Verifiable();
-                                };
+        Establish context = () => _dependency = AutoMocker.Get<IDependency>();
         
         Because of = () => ClassUnderTest.InvokeDependencyMethod();
 
-        It should_call_dependency_method = () => _dependencyType.VerifyAll();
+        It should_call_dependency_method = () => _dependency.Verify(dependency => dependency.Method(), Times.Once());
 
-        private static Mock<IDependencyType> _dependencyType;
+        private static Mock<IDependency> _dependency;
     }
 
     [Subject(typeof(DependencyController), "invoke dependency method"), Tags("Sample.BDDFramework.Automock")]
     public class when_given_a_dependency_controller_using_with_dependency_object : with_dependency_object
     {
-        Establish context = () => DependencyType.Setup(x => x.DependencyMethod()).Verifiable();
-
         Because of = () => ClassUnderTest.InvokeDependencyMethod();
 
-        It should_call_dependency_method = () => DependencyType.VerifyAll();
+        It should_call_dependency_method = () => Dependency.Verify(dependency => dependency.Method(), Times.Once());
     }
 
     public class with_dependency_object : SpecificationFor<DependencyController>
     {
-        protected static Mock<IDependencyType> DependencyType;
+        protected static Mock<IDependency> Dependency;
 
         public with_dependency_object()
         {
-            DependencyType = AutoMocker.Get<IDependencyType>();
+            Dependency = AutoMocker.Get<IDependency>();
         }
     }
 }
