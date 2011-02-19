@@ -120,5 +120,15 @@ namespace templateproject.Infrastructure.Log
         {
             return new NLogLoggerProxy(LogManager.GetLogger(loggerName));
         }
+
+        public static ILog GetCurrentClassLogger()
+        {
+            return new NLogLoggerProxy(LogManager.GetCurrentClassLogger());
+        }
+
+        public static ILog GetCurrentClassLogger(Type loggerType)
+        {
+            return new NLogLoggerProxy(LogManager.GetCurrentClassLogger(loggerType));
+        }
     }
 }

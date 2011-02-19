@@ -1,19 +1,40 @@
+using System;
+
 namespace templateproject.Infrastructure.Log
 {
     /// <summary>
-    /// Factory class for logging. 
-    /// is done for system debug purposes. All other application logging 
-    /// necessary for application statistics is outside the scope of this module.
+    /// Factory class for logging is done for system debug purposes. 
     /// </summary>
+    /// <remarks>
+    /// All other application logging necessary for application statistics is outside the scope of this module.
+    /// </remarks>
     public class LogFactory
     {
+        /// <summary>
+        /// The method returns a logger for logger name
+        /// </summary>
+        /// <returns>ILog</returns>
+        public static ILog GetLogger(string loggerName)
+        {
+            return CommonLoggingLoggerProxy.GetLogger(loggerName);
+        }
+
+        /// <summary>
+        /// The method returns a logger for type of T
+        /// </summary>
+        /// <returns>ILog</returns>
+        public static ILog GetLogger<T>() where T : class
+        {
+            return CommonLoggingLoggerProxy.GetLogger<T>();
+        }
+
         /// <summary>
         /// The method returns a logger for Domain layer.
         /// </summary>
         /// <returns>ILog</returns>
         public static ILog GetDomainLayerLogger()
         {
-            return NLogLoggerProxy.GetLogger("DomainLayerLogger");
+            return CommonLoggingLoggerProxy.GetLogger("DomainLayerLogger");
         }
 
         /// <summary>
@@ -22,7 +43,7 @@ namespace templateproject.Infrastructure.Log
         /// <returns>ILog</returns>
         public static ILog GetApplicationLayerLogger()
         {
-            return NLogLoggerProxy.GetLogger("ApplicationLayerLogger");
+            return CommonLoggingLoggerProxy.GetLogger("ApplicationLayerLogger");
         }
 
         /// <summary>
@@ -31,7 +52,7 @@ namespace templateproject.Infrastructure.Log
         /// <returns>ILog</returns>
         public static ILog GetInterfaceLayerLogger()
         {
-            return NLogLoggerProxy.GetLogger("InterfaceLayerLogger");
+            return CommonLoggingLoggerProxy.GetLogger("InterfaceLayerLogger");
         }
 
         /// <summary>
@@ -40,7 +61,7 @@ namespace templateproject.Infrastructure.Log
         /// <returns>ILog</returns>
         public static ILog GetExternalServiceLogger()
         {
-            return NLogLoggerProxy.GetLogger("ExternalServiceLogger");
+            return CommonLoggingLoggerProxy.GetLogger("ExternalServiceLogger");
         }
 
         /// <summary>
@@ -49,7 +70,7 @@ namespace templateproject.Infrastructure.Log
         /// <returns>ILog</returns>
         public static ILog GetSpecificationLogger()
         {
-            return NLogLoggerProxy.GetLogger("SpecificationLogger");
+            return CommonLoggingLoggerProxy.GetLogger("SpecificationLogger");
         }
     }
 }
