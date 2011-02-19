@@ -5,31 +5,11 @@ namespace templateproject.Framework.Sample
     using Machine.Specifications;
     using It = Machine.Specifications.It;
 
-    public interface IDependency
-    {
-        void Method();
-    }
-
-    public class DependencyController
-    {
-        protected IDependency Dependency { get; set; }
-
-        public DependencyController(IDependency dependency)
-        {
-            Dependency = dependency;
-        }
-
-        public void InvokeDependencyMethod()
-        {
-            Dependency.Method();
-        }
-    }
-
     [Subject(typeof(DependencyController), "invoke dependency method"), Tags("Sample.BDDFramework.Automock")]
     public class when_given_a_dependency_controller : SpecificationFor<DependencyController>
     {
         Establish context = () => _dependency = AutoMocker.Get<IDependency>();
-        
+
         Because of = () => ClassUnderTest.InvokeDependencyMethod();
 
         It should_call_dependency_method = () => _dependency.Verify(dependency => dependency.Method(), Times.Once());
@@ -52,6 +32,26 @@ namespace templateproject.Framework.Sample
         public with_dependency_object()
         {
             Dependency = AutoMocker.Get<IDependency>();
+        }
+    }
+
+    public interface IDependency
+    {
+        void Method();
+    }
+
+    public class DependencyController
+    {
+        protected IDependency Dependency { get; set; }
+
+        public DependencyController(IDependency dependency)
+        {
+            Dependency = dependency;
+        }
+
+        public void InvokeDependencyMethod()
+        {
+            Dependency.Method();
         }
     }
 }
