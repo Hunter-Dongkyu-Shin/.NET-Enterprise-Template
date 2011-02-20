@@ -44,13 +44,13 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\ToStringBuilder.cs" />
     <Compile Include="Log\CommonLoggingLoggerProxy.cs" />
     <Compile Include="Log\ILog.cs" />
     <Compile Include="Log\LogFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Builders\" />
     <Folder Include="Messaging\" />
     <Folder Include="Utils\" />
     <Folder Include="Validations\" />
