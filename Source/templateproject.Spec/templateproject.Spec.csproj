@@ -50,8 +50,12 @@
     <Compile Include="Framework\ClassUnderTest.cs" />
     <Compile Include="Framework\Sample\Specifications.AutoMock.cs" />
     <Compile Include="Framework\Sample\Specifications.cs" />
+    <Compile Include="Infrastructure\Builders\EqualsBuilderSpec.cs" />
+    <Compile Include="Infrastructure\Builders\HashCodeBuilderSpec.cs" />
     <Compile Include="Infrastructure\Builders\ToStringBuilderSpec.cs" />
     <Compile Include="Infrastructure\Log\LoggerSpec.cs" />
+    <Compile Include="Infrastructure\Utils\DateTimeUtilSpec.cs" />
+    <Compile Include="Infrastructure\Utils\FileUtilSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Framework\SpecificationFor.cs" />
   </ItemGroup>
