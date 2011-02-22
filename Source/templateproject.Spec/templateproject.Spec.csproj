@@ -8,7 +8,7 @@
     <ProjectGuid>{DAEA087C-F919-40E4-B5F1-DECF9CC39390}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>templateproject.Spec</RootNamespace>
+    <RootNamespace>templateproject</RootNamespace>
     <AssemblyName>templateproject.Spec</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -31,17 +31,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\net-4.0\Common.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="Machine.Specifications">
       <HintPath>..\..\Tools\MSpec\Machine.Specifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\lib\net-4.0\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq.Contrib">
+      <HintPath>..\..\lib\net-4.0\Moq.Contrib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Framework\AutoMockFactory.cs" />
+    <Compile Include="Framework\ClassUnderTest.cs" />
+    <Compile Include="Framework\Sample\Specifications.AutoMock.cs" />
+    <Compile Include="Framework\Sample\Specifications.cs" />
+    <Compile Include="Infrastructure\Builders\EqualsBuilderSpec.cs" />
+    <Compile Include="Infrastructure\Builders\HashCodeBuilderSpec.cs" />
+    <Compile Include="Infrastructure\Builders\ToStringBuilderSpec.cs" />
+    <Compile Include="Infrastructure\Log\LoggerSpec.cs" />
+    <Compile Include="Infrastructure\Utils\DateTimeUtilSpec.cs" />
+    <Compile Include="Infrastructure\Utils\FileUtilSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Framework\SpecificationFor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\Model\" />
-    <Folder Include="Infrastructure\Builders\" />
     <Folder Include="Infrastructure\Messaging\" />
     <Folder Include="Infrastructure\Persistence\Inmemory\" />
     <Folder Include="Infrastructure\Persistence\NHibernate\" />
@@ -71,7 +90,24 @@
       <Name>templateproject.Web.Controllers</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="logging.nlog.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>copy $(SolutionDir)Source\templateproject.Infrastructure\$(OutDir)*NLog* $(TargetDir)</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
