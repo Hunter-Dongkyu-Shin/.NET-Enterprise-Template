@@ -75,7 +75,7 @@
     <Compile Include="Infrastructure\Builders\HashCodeBuilderSpec.cs" />
     <Compile Include="Infrastructure\Builders\ToStringBuilderSpec.cs" />
     <Compile Include="Infrastructure\Log\LoggerSpec.cs" />
-    <Compile Include="Infrastructure\Persistence\NHibernate\BaseRepositorySpec.cs" />
+    <Compile Include="Infrastructure\Persistence\NHibernate\with_nhibernate_sqlite.cs" />
     <Compile Include="Infrastructure\Utils\DateTimeUtilSpec.cs" />
     <Compile Include="Infrastructure\Utils\FileUtilSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

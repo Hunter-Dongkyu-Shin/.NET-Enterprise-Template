@@ -1,6 +1,5 @@
 ﻿namespace templateproject.Infrastructure.Persistence.NHibernate
 {
-    using System.Reflection;
     using templateproject.Persistence.NHibernate;
     using templateproject.Persistence.NHibernate.Utils;
     using Rhino.Commons;
