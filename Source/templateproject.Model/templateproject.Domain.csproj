@@ -8,8 +8,8 @@
     <ProjectGuid>{8E323A6D-3B08-4EB0-8278-B06537B6B4F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>templateproject.Model</RootNamespace>
-    <AssemblyName>templateproject.Model</AssemblyName>
+    <RootNamespace>templateproject.Domain</RootNamespace>
+    <AssemblyName>templateproject.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

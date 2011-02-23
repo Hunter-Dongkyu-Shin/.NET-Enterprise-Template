@@ -31,6 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel">
+      <HintPath>..\..\lib\net-4.0\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\..\lib\net-4.0\Common.Logging.dll</HintPath>
     </Reference>
@@ -43,7 +52,19 @@
     <Reference Include="Moq.Contrib">
       <HintPath>..\..\lib\net-4.0\Moq.Contrib.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\lib\net-4.0\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\lib\net-4.0\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons.NHibernate">
+      <HintPath>..\..\lib\net-4.0\Rhino.Commons.NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\lib\net-4.0\System.Data.SQLite.DLL</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\AutoMockFactory.cs" />
@@ -54,6 +75,7 @@
     <Compile Include="Infrastructure\Builders\HashCodeBuilderSpec.cs" />
     <Compile Include="Infrastructure\Builders\ToStringBuilderSpec.cs" />
     <Compile Include="Infrastructure\Log\LoggerSpec.cs" />
+    <Compile Include="Infrastructure\Persistence\NHibernate\BaseRepositorySpec.cs" />
     <Compile Include="Infrastructure\Utils\DateTimeUtilSpec.cs" />
     <Compile Include="Infrastructure\Utils\FileUtilSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,7 +85,6 @@
     <Folder Include="Domain\Model\" />
     <Folder Include="Infrastructure\Messaging\" />
     <Folder Include="Infrastructure\Persistence\Inmemory\" />
-    <Folder Include="Infrastructure\Persistence\NHibernate\" />
     <Folder Include="Infrastructure\Routing\" />
     <Folder Include="Presentation\" />
     <Folder Include="Scenarios\" />
@@ -91,6 +112,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="hibernate.cfg.xml" />
     <Content Include="logging.nlog.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -99,6 +121,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="nh-windsor.boo" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
