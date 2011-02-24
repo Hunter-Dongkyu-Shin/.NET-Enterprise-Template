@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<nlog autoReload="true" xmlns="http://www.nlog-project.org/schemas/NLog.netfx40.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<nlog autoReload="true" throwExceptions="true" xmlns="http://www.nlog-project.org/schemas/NLog.netfx40.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 	<variable name="logDirectory" value="${basedir}/logs" />
 	<variable name="logFilename" value="templateproject.Spec" />
@@ -9,7 +9,14 @@
 	<targets async="false">
 
 		<!-- 참고 : http://nlog-project.org/wiki/Configuration_file, http://nlog-project.org/wiki/File_target -->
-		
+
+    <!-- TODO : Common.Logging.NLog의 NLog 하위버전 참조에 따른 prototype의 불일치로 parsing이 불가능 -->
+    <!-- Route Common.Logging messages to NLog -->
+    <!--<target name="common.logging"
+          xsi:type="Common.Logging.NLog.CommonLoggingTarget, Common.Logging.NLog"
+          fileName="${logDirectory}/${logFilename}-${shortdate}.log"
+          layout="${defaultLayout}" />-->
+    
 		<target name="console" xsi:type="Console" layout="${defaultLayout}" />
 
 		<target name="file"
@@ -37,8 +44,8 @@
 				keepFileOpen="false"
 				layout="${defaultLayout}"
 				encoding="utf-8" />
-				
-	</targets>
+    
+  </targets>
 
 	<rules>
 		<logger name="templateproject.Infrastructure.*" minlevel="Info" writeTo="console" />

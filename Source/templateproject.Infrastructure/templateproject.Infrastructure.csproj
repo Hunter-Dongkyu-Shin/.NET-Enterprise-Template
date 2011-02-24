@@ -35,8 +35,14 @@
       <HintPath>..\..\lib\net-4.0\Common.Logging.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Common.Logging.Log4Net">
+      <HintPath>..\..\lib\net-4.0\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging.NLog">
       <HintPath>..\..\lib\net-4.0\Common.Logging.NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\lib\net-4.0\log4net.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
