@@ -18,14 +18,13 @@ namespace templateproject.Infrastructure.Log
         {
             return CommonLoggingLoggerProxy.GetLogger(loggerName);
         }
-
         /// <summary>
-        /// The method returns a logger for type of T
+        /// The method returns a logger for logger type
         /// </summary>
         /// <returns>ILog</returns>
-        public static ILog GetLogger<T>() where T : class
+        public static ILog GetLogger(Type type)
         {
-            return CommonLoggingLoggerProxy.GetLogger<T>();
+            return CommonLoggingLoggerProxy.GetLogger(type);
         }
 
         /// <summary>

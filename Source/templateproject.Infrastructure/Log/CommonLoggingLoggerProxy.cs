@@ -141,9 +141,9 @@ namespace templateproject.Infrastructure.Log
             return new CommonLoggingLoggerProxy(LogManager.GetLogger(loggerName));
         }
 
-        public static ILog GetLogger<T>() where T : class
+        public static ILog GetLogger(Type type)
         {
-            return new CommonLoggingLoggerProxy(LogManager.GetLogger<T>());
+            return new CommonLoggingLoggerProxy(LogManager.GetLogger(type));
         }
     }
 }

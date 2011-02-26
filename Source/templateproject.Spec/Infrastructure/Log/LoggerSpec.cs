@@ -29,7 +29,8 @@ namespace templateproject.Infrastructure.Log
     [Subject(typeof(ILog)), Tags("Infrastructure.Log")]
     public class when_given_a_logger_from_log_factory
     {
-        public static ILog logger = LogFactory.GetLogger<when_given_a_logger_from_log_factory>();
+        public static readonly ILog logger =
+            LogFactory.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         It can_write_log_message_for_trace_level = () => { if (logger.IsTraceEnabled) logger.Trace("This is a log message for TRACE level"); };
         It can_write_log_message_for_debug_level = () => { if (logger.IsDebugEnabled) logger.Debug("This is a log message for DEBUG level"); };
