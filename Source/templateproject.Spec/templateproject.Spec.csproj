@@ -12,6 +12,21 @@
     <AssemblyName>templateproject.Spec</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +46,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel">
+      <HintPath>..\..\lib\net-4.0\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
       <HintPath>..\..\lib\net-4.0\Common.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Machine.Specifications">
@@ -43,7 +67,24 @@
     <Reference Include="Moq.Contrib">
       <HintPath>..\..\lib\net-4.0\Moq.Contrib.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\lib\net-4.0\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\lib\net-4.0\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Commons.NHibernate">
+      <HintPath>..\..\lib\net-4.0\Rhino.Commons.NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\lib\net-4.0\System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\AutoMockFactory.cs" />
@@ -54,6 +95,9 @@
     <Compile Include="Infrastructure\Builders\HashCodeBuilderSpec.cs" />
     <Compile Include="Infrastructure\Builders\ToStringBuilderSpec.cs" />
     <Compile Include="Infrastructure\Log\LoggerSpec.cs" />
+    <Compile Include="Infrastructure\Persistence\NHibernate\GenerateSchema.cs" />
+    <Compile Include="Infrastructure\Persistence\NHibernate\Sample\Product.cs" />
+    <Compile Include="Infrastructure\Persistence\NHibernate\with_nhibernate_sqlite.cs" />
     <Compile Include="Infrastructure\Utils\DateTimeUtilSpec.cs" />
     <Compile Include="Infrastructure\Utils\FileUtilSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,7 +107,6 @@
     <Folder Include="Domain\Model\" />
     <Folder Include="Infrastructure\Messaging\" />
     <Folder Include="Infrastructure\Persistence\Inmemory\" />
-    <Folder Include="Infrastructure\Persistence\NHibernate\" />
     <Folder Include="Infrastructure\Routing\" />
     <Folder Include="Presentation\" />
     <Folder Include="Scenarios\" />
@@ -91,6 +134,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <EmbeddedResource Include="Infrastructure\Persistence\NHibernate\Sample\Product.hbm.xml" />
     <Content Include="logging.nlog.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -99,6 +147,34 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="nh-windsor.boo" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -106,7 +182,8 @@
     </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>copy $(SolutionDir)Source\templateproject.Infrastructure\$(OutDir)*NLog* $(TargetDir)</PreBuildEvent>
+    <PreBuildEvent>copy $(SolutionDir)Source\templateproject.Infrastructure\$(OutDir)*NLog* $(TargetDir)
+copy $(SolutionDir)Source\templateproject.Infrastructure\$(OutDir)*log4net* $(TargetDir)</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
