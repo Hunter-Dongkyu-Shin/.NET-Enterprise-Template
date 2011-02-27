@@ -14,7 +14,8 @@ namespace templateproject.Infrastructure.Builders
         It should_return_a_string_containing_null_information = () => objString.ShouldNotBeEmpty();
         It should_return_a_string_and_it_is = () => { if (logger.IsInfoEnabled) logger.Info(objString); };
 
-        private static readonly ILog logger = LogFactory.GetLogger<when_given_a_derived_object>();
+        public static readonly ILog logger =
+            LogFactory.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static object obj;
         private static string objString;
     }
@@ -33,7 +34,8 @@ namespace templateproject.Infrastructure.Builders
         It should_return_a_string_containing_the_property = () => objString.ShouldContain(propertyValue.ToString());
         It should_return_a_string_and_it_is = () => { if (logger.IsInfoEnabled) logger.Info(objString); };
 
-        private static readonly ILog logger = LogFactory.GetLogger<when_given_a_derived_object>();
+        public static readonly ILog logger =
+            LogFactory.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static int propertyValue;
         private static object obj;
         private static string objString;
@@ -56,7 +58,8 @@ namespace templateproject.Infrastructure.Builders
         It should_return_a_string_containing_the_property_of_supertype = () => objString.ShouldContain(propertyValueOfSuperType.ToString());
         It should_return_a_string_and_it_is = () => { if (logger.IsInfoEnabled) logger.Info(objString); };
 
-        private static readonly ILog logger = LogFactory.GetLogger<when_given_a_derived_object>();
+        public static readonly ILog logger =
+            LogFactory.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static int propertyValueOfType;
         private static int propertyValueOfSuperType;
         private static object obj;

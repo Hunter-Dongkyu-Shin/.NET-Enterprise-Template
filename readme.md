@@ -10,7 +10,15 @@ Templify Package파일을 이용하여 솔루션을 빠르게 생성하고 작�
 Development log
 ---------------
 
-~ 2010-02-22
+####2010-02-24
+
+[Notes]
+
+* type-named logger를 이용하도록 LogManager 수정 및 테스트
+* NLog layout 변경 => 잘못된 callsite 대신 type-named logger의 logger name 출력
+
+
+####~ 2010-02-22
 
 [Notes]
 

@@ -4,7 +4,8 @@
 
 	<variable name="logDirectory" value="${basedir}/logs" />
 	<variable name="logFilename" value="templateproject.Spec" />
-	<variable name="defaultLayout" value="${longdate} [${threadid}] [${level}] [${logger}] [${callsite}]# ${message} ${exception:format=tostring}"/>
+	<variable name="defaultLayout" value="${longdate} [${threadid}] [${level}] [${logger}]# ${message} ${exception:format=tostring}"/>
+	<!--<variable name="defaultLayout" value="${longdate} [${threadid}] [${level}] [${logger}] [${callsite}]# ${message} ${exception:format=tostring}"/>-->
 
 	<targets async="false">
 
