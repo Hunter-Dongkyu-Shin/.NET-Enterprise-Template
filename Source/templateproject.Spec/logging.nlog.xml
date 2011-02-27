@@ -18,6 +18,8 @@
           layout="${defaultLayout}" />-->
     
 		<target name="console" xsi:type="Console" layout="${defaultLayout}" />
+    
+    <target name="trace" xsi:type="Trace" layout="${defaultLayout}" />
 
 		<target name="file"
 				xsi:type="File"
@@ -48,8 +50,8 @@
   </targets>
 
 	<rules>
-		<logger name="templateproject.Infrastructure.*" minlevel="Info" writeTo="console" />
-	  <logger name="*" minlevel="Warn" writeTo="console" />
+		<logger name="templateproject.Infrastructure.*" minlevel="Info" writeTo="console, fileByDay" />
+	  <logger name="*" minlevel="Trace" writeTo="console, fileByDay" />
 	</rules>
 
 </nlog>
