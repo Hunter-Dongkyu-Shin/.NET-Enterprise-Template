@@ -10,10 +10,23 @@ Templify Package파일을 이용하여 솔루션을 빠르게 생성하고 작�
 Development log
 ---------------
 
+####2010-02-27
+
+[Notes]
+
+* NHibernate Schema Export Sample 작성
+
+[Todo]
+
+* Common Logging을 이용한 NHibernate's log의 Bridge 구성 (Log4Net => NLog) Issue #6 참고
+
+
 ####2010-02-24
 
 [Notes]
 
+* Rhino.Commons Library를 이용한 NHRepository 구성
+* NHRepository 테스트시 사용할 BDD context class 구성
 * type-named logger를 이용하도록 LogManager 수정 및 테스트
 * NLog layout 변경 => 잘못된 callsite 대신 type-named logger의 logger name 출력
 
