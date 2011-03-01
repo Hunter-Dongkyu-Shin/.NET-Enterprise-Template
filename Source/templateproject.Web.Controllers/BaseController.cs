@@ -9,7 +9,7 @@ namespace templateproject.Web.Controllers
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            ViewData["Title"] = GetPageTitle();
+            ViewBag.Title = GetPageTitle();
         }
 
         protected override void OnException(ExceptionContext filterContext)
