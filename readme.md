@@ -14,6 +14,7 @@ Development log
 
 [Notes]
 
+* ASP.NET MVC Controller의 Abstract Template Method 구성
 * NHibernate Schema Export Sample 작성
 
 [Todo]
