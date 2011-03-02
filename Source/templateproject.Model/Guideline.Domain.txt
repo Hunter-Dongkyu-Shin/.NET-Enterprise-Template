@@ -1,14 +1,14 @@
-﻿Domain layer guideline
+﻿# Domain layer guideline
 
 순수한 Domain용 프로젝트입니다.
 
+-----------------------------------------------------------------------------------------
+
+## 프로젝트 트리
 
 [Model]
-	*. Domain의 각 Entity별로 폴더를 구성합니다.
+	*. Domain의 각 Aggregate별로 폴더를 구성합니다.
 	*. Entity 폴더내에, Model/Factory/IEntityRepository를 구성합니다.
-	*. TODO : Model의 역할 기재
-	*. TODO : Factory의 역할 기재
-	*. TODO : Repository의 역할 기재
 
 [Service]
 	*. TODO : Domain Servic를 명확히 인지한 후 작성할 것.
